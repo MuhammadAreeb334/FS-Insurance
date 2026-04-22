@@ -75,7 +75,12 @@ const ServicesSection = () => {
             variants={itemVariants}
             className="inline-flex items-center gap-2 bg-white px-4 py-2 rounded-full mb-6 shadow-sm"
           >
-            <Sparkles size={16} className="text-[#171818]" />
+            <motion.div
+              animate={{ rotate: 360 }}
+              transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
+            >
+              <Sparkles size={16} className="text-[#171818]" />
+            </motion.div>
             <span className="text-xs font-bold tracking-wider text-[#171818] uppercase">
               Our Services
             </span>
@@ -149,15 +154,6 @@ const ServicesSection = () => {
                   <p className="text-white/80 text-xs leading-relaxed mb-3">
                     {service.desc}
                   </p>
-
-                  <div className="flex items-center justify-between">
-                    <span className="text-[10px] font-semibold text-white/70 uppercase tracking-wider">
-                      Learn More
-                    </span>
-                    <div className="w-7 h-7 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center group-hover:bg-white group-hover:text-[#171818] transition-all duration-300">
-                      <ArrowUpRight size={14} />
-                    </div>
-                  </div>
                 </div>
               </motion.div>
             );
