@@ -12,27 +12,26 @@ import {
 } from "lucide-react";
 
 const GetPolicy = () => {
-  const ref = useRef(null);
   const navigate = useNavigate();
-  const isInView = useInView(ref, {
-    once: true,
-    amount: 0.2,
-    triggerOnce: true,
-  });
+  
+  // Separate refs for different sections
+  const badgeRef = useRef(null);
+  const titleRef = useRef(null);
+  const featuresRef = useRef(null);
+  const ctaRef = useRef(null);
+  const trustBadgeRef = useRef(null);
+
+  const isBadgeInView = useInView(badgeRef, { once: true, amount: 0.2 });
+  const isTitleInView = useInView(titleRef, { once: true, amount: 0.2 });
+  const isFeaturesInView = useInView(featuresRef, { once: true, amount: 0.2 });
+  const isCtaInView = useInView(ctaRef, { once: true, amount: 0.2 });
+  const isTrustBadgeInView = useInView(trustBadgeRef, { once: true, amount: 0.2 });
 
   const features = [
     { icon: <Shield className="w-5 h-5" />, text: "Instant Quote" },
     { icon: <Clock className="w-5 h-5" />, text: "Fast Approval" },
     { icon: <BadgeCheck className="w-5 h-5" />, text: "Best Rates" },
   ];
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { staggerChildren: 0.2, delayChildren: 0.1 },
-    },
-  };
 
   const itemVariants = {
     hidden: { y: 60, opacity: 0, scale: 0.9 },
@@ -70,14 +69,8 @@ const GetPolicy = () => {
   return (
     <section className="bg-gradient-to-br from-[#171818] to-gray-800 py-8 overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <motion.div
-          ref={ref}
-          variants={containerVariants}
-          initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
-          className="relative"
-        >
-          {/* Background Decorative Elements */}
+        <div className="relative">
+          {/* Background Decorative Elements - Always animated */}
           <motion.div
             className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-3xl"
             animate={{
@@ -96,9 +89,13 @@ const GetPolicy = () => {
           />
 
           <div className="relative z-10 text-center">
-            {/* Badge */}
+            
+            {/* BADGE SECTION - Animates first */}
             <motion.div
+              ref={badgeRef}
               variants={itemVariants}
+              initial="hidden"
+              animate={isBadgeInView ? "visible" : "hidden"}
               className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-1.5 rounded-full mb-4 border border-white/20"
             >
               <motion.div
@@ -112,26 +109,31 @@ const GetPolicy = () => {
               </span>
             </motion.div>
 
-            {/* Main Title */}
-            <motion.h2
-              variants={itemVariants}
-              className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-3 leading-tight"
-            >
-              Get a Policy
-            </motion.h2>
-
-            {/* Description */}
-            <motion.p
-              variants={itemVariants}
-              className="text-white/80 max-w-2xl mx-auto leading-relaxed text-base mb-6"
-            >
-              Get your personalized insurance quote in minutes. Fast, easy, and
-              completely free. Protect what matters most today.
-            </motion.p>
-
-            {/* Features Grid */}
+            {/* TITLE SECTION - Animates second */}
             <motion.div
-              variants={containerVariants}
+              ref={titleRef}
+              variants={itemVariants}
+              initial="hidden"
+              animate={isTitleInView ? "visible" : "hidden"}
+            >
+              <motion.h2
+                className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-3 leading-tight"
+              >
+                Get a Policy
+              </motion.h2>
+
+              {/* Description */}
+              <motion.p
+                className="text-white/80 max-w-2xl mx-auto leading-relaxed text-base mb-6"
+              >
+                Get your personalized insurance quote in minutes. Fast, easy, and
+                completely free. Protect what matters most today.
+              </motion.p>
+            </motion.div>
+
+            {/* FEATURES SECTION - Animates third */}
+            <motion.div
+              ref={featuresRef}
               className="flex flex-wrap justify-center gap-4 mb-8"
             >
               {features.map((feature, index) => (
@@ -139,6 +141,8 @@ const GetPolicy = () => {
                   key={index}
                   custom={index}
                   variants={featureVariants}
+                  initial="hidden"
+                  animate={isFeaturesInView ? "visible" : "hidden"}
                   className="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-3 py-1.5 rounded-full border border-white/20"
                 >
                   <div className="text-white">{feature.icon}</div>
@@ -149,9 +153,12 @@ const GetPolicy = () => {
               ))}
             </motion.div>
 
-            {/* CTA Buttons */}
+            {/* CTA SECTION - Animates fourth */}
             <motion.div
+              ref={ctaRef}
               variants={itemVariants}
+              initial="hidden"
+              animate={isCtaInView ? "visible" : "hidden"}
               className="flex flex-col sm:flex-row gap-3 justify-center"
             >
               <motion.button
@@ -174,11 +181,12 @@ const GetPolicy = () => {
               </motion.button>
             </motion.div>
 
-            {/* Trust Badge */}
+            {/* TRUST BADGE SECTION - Animates last */}
             <motion.div
+              ref={trustBadgeRef}
               initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: 1.2, duration: 0.6 }}
+              animate={isTrustBadgeInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6 }}
               className="mt-8 pt-6 border-t border-white/10"
             >
               <p className="text-white/40 text-xs">
@@ -187,7 +195,7 @@ const GetPolicy = () => {
               </p>
             </motion.div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

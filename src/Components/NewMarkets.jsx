@@ -28,8 +28,14 @@ const marketClasses = [
 ];
 
 const NewMarkets = () => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 0.1, triggerOnce: true });
+  // Separate refs for header, cards, and CTA sections
+  const headerRef = useRef(null);
+  const cardsRef = useRef(null);
+  const ctaRef = useRef(null);
+
+  const isHeaderInView = useInView(headerRef, { once: true, amount: 0.2 });
+  const isCardsInView = useInView(cardsRef, { once: true, amount: 0.1 });
+  const isCtaInView = useInView(ctaRef, { once: true, amount: 0.3 });
 
   // Staggered header animation - longer delays
   const headerContainerVariants = {
@@ -86,12 +92,12 @@ const NewMarkets = () => {
     <section className="bg-gray-50 py-8 overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         
-        {/* HEADER SECTION - Longer entrance */}
+        {/* HEADER SECTION - Animates when this part comes into view */}
         <motion.div
-          ref={ref}
+          ref={headerRef}
           variants={headerContainerVariants}
           initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
+          animate={isHeaderInView ? "visible" : "hidden"}
           className="text-center mb-16"
         >
           <motion.div
@@ -118,7 +124,7 @@ const NewMarkets = () => {
               Following Classes
               <motion.span
                 initial={{ width: 0, left: 0 }}
-                animate={isInView ? { width: "100%" } : {}}
+                animate={isHeaderInView ? { width: "100%" } : {}}
                 transition={{ delay: 1.2, duration: 1.2, ease: "easeOut" }}
                 className="absolute bottom-2 left-0 h-3 bg-[#171818]/10 -z-10"
               />
@@ -134,15 +140,18 @@ const NewMarkets = () => {
           </motion.p>
         </motion.div>
 
-        {/* CARDS GRID SECTION - Longer card entrance */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* CARDS GRID SECTION - Animates separately when scrolled into view */}
+        <motion.div
+          ref={cardsRef}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+        >
           {marketClasses.map((item, index) => (
             <motion.div
               key={index}
               custom={index}
               variants={cardVariants}
               initial="hidden"
-              animate={isInView ? "visible" : "hidden"}
+              animate={isCardsInView ? "visible" : "hidden"}
               whileHover={{ 
                 y: -8,
                 transition: { duration: 0.4 }
@@ -166,7 +175,7 @@ const NewMarkets = () => {
                   <motion.div 
                     className="absolute inset-0 bg-gradient-to-t from-[#171818]/90 via-[#171818]/40 to-transparent"
                     initial={{ opacity: 0 }}
-                    animate={isInView ? { opacity: 1 } : {}}
+                    animate={isCardsInView ? { opacity: 1 } : {}}
                     transition={{ delay: 0.4 + index * 0.25, duration: 1.0 }}
                   />
 
@@ -174,7 +183,7 @@ const NewMarkets = () => {
                   <motion.div 
                     className="absolute bottom-0 left-0 right-0 p-6"
                     initial={{ y: 80, opacity: 0 }}
-                    animate={isInView ? { y: 0, opacity: 1 } : {}}
+                    animate={isCardsInView ? { y: 0, opacity: 1 } : {}}
                     transition={{ delay: 0.7 + index * 0.25, duration: 0.8, type: "spring", stiffness: 80 }}
                   >
                     <h3 className="text-white text-2xl font-bold">
@@ -183,7 +192,7 @@ const NewMarkets = () => {
                     <motion.div 
                       className="w-12 h-0.5 bg-white/50 mt-2"
                       initial={{ width: 0 }}
-                      animate={isInView ? { width: 48 } : {}}
+                      animate={isCardsInView ? { width: 48 } : {}}
                       transition={{ delay: 0.95 + index * 0.25, duration: 0.8 }}
                     />
                   </motion.div>
@@ -194,7 +203,7 @@ const NewMarkets = () => {
                   {/* Description */}
                   <motion.p
                     initial={{ y: 40, opacity: 0 }}
-                    animate={isInView ? { y: 0, opacity: 1 } : {}}
+                    animate={isCardsInView ? { y: 0, opacity: 1 } : {}}
                     transition={{ delay: 0.9 + index * 0.25, duration: 0.7 }}
                     className="text-gray-600 text-sm leading-relaxed mb-5"
                   >
@@ -204,7 +213,7 @@ const NewMarkets = () => {
                   {/* Features List - Longer staggered children */}
                   <motion.div
                     initial="hidden"
-                    animate={isInView ? "visible" : "hidden"}
+                    animate={isCardsInView ? "visible" : "hidden"}
                     variants={{
                       hidden: { opacity: 0 },
                       visible: {
@@ -232,7 +241,7 @@ const NewMarkets = () => {
                   {/* Learn More Button */}
                   <motion.button
                     initial={{ y: 30, opacity: 0 }}
-                    animate={isInView ? { y: 0, opacity: 1 } : {}}
+                    animate={isCardsInView ? { y: 0, opacity: 1 } : {}}
                     transition={{ delay: 1.3 + index * 0.25, duration: 0.6 }}
                     className="flex items-center justify-between w-full pt-4 border-t border-gray-100 group/btn"
                   >
@@ -249,20 +258,21 @@ const NewMarkets = () => {
                 <motion.div 
                   className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#171818] via-[#171818]/50 to-transparent"
                   initial={{ scaleX: 0, opacity: 0 }}
-                  animate={isInView ? { scaleX: 1, opacity: 1 } : {}}
+                  animate={isCardsInView ? { scaleX: 1, opacity: 1 } : {}}
                   transition={{ delay: 0.3 + index * 0.25, duration: 1.2, ease: "easeOut" }}
                   style={{ originX: 0 }}
                 />
               </div>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
 
-        {/* Bottom CTA - Longer entrance */}
+        {/* BOTTOM CTA SECTION - Animates separately at the end */}
         <motion.div
+          ref={ctaRef}
           initial={{ opacity: 0, scale: 0.9, y: 60 }}
-          animate={isInView ? { opacity: 1, scale: 1, y: 0 } : {}}
-          transition={{ delay: 1.8, duration: 0.9, type: "spring", stiffness: 100 }}
+          animate={isCtaInView ? { opacity: 1, scale: 1, y: 0 } : {}}
+          transition={{ delay: 0.3, duration: 0.9, type: "spring", stiffness: 100 }}
           className="text-center mt-16"
         >
           <motion.button

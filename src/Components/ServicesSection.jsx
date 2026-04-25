@@ -28,8 +28,12 @@ const services = [
 ];
 
 const ServicesSection = () => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 0.2 });
+  // Separate refs for header and cards sections
+  const headerRef = useRef(null);
+  const cardsRef = useRef(null);
+
+  const isHeaderInView = useInView(headerRef, { once: true, amount: 0.2 });
+  const isCardsInView = useInView(cardsRef, { once: true, amount: 0.2 });
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -63,11 +67,12 @@ const ServicesSection = () => {
   return (
     <section className="bg-gray-50 py-8 overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        {/* HEADER */}
+        
+        {/* HEADER SECTION - Animates when this part comes into view */}
         <motion.div
-          ref={ref}
+          ref={headerRef}
           initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
+          animate={isHeaderInView ? "visible" : "hidden"}
           variants={containerVariants}
           className="text-center mb-16"
         >
@@ -95,7 +100,7 @@ const ServicesSection = () => {
               life
               <motion.span
                 initial={{ width: 0 }}
-                animate={isInView ? { width: "100%" } : {}}
+                animate={isHeaderInView ? { width: "100%" } : {}}
                 transition={{ delay: 0.5, duration: 0.8 }}
                 className="absolute bottom-2 left-0 h-3 bg-[#171818]/10 -z-10"
               />
@@ -112,11 +117,11 @@ const ServicesSection = () => {
           </motion.p>
         </motion.div>
 
-        {/* CARDS - Compact Overlay Design */}
+        {/* CARDS SECTION - Animates separately when scrolled into view */}
         <motion.div
-          ref={ref}
+          ref={cardsRef}
           initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
+          animate={isCardsInView ? "visible" : "hidden"}
           variants={containerVariants}
           className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
         >
