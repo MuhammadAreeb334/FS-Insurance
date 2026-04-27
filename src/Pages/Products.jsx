@@ -1,14 +1,14 @@
 // pages/Products.jsx
 import React from "react";
-import HeroSection from "../components/products/HeroSection";
-import ConvenienceSection from "../components/products/ConvenienceSection";
-import PropertySection from "../components/products/PropertySection";
-import LiabilitySection from "../components/products/LiabilitySection";
-import OptionalSection from "../components/products/OptionalSection";
-import AutoSection from "../components/products/AutoSection";
-import UmbrellaSection from "../components/products/UmbrellaSection";
-import WorkersSection from "../components/products/WorkersSection";
-import CtaSection from "../components/products/CtaSection";
+import HeroSection from "../Components/products/HeroSection";
+import ConvenienceSection from "../Components/products/ConvenienceSection";
+import PropertySection from "../Components/products/PropertySection";
+import LiabilitySection from "../Components/products/LiabilitySection";
+import OptionalSection from "../Components/products/OptionalSection";
+import AutoSection from "../Components/products/AutoSection";
+import UmbrellaSection from "../Components/products/UmbrellaSection";
+import WorkersSection from "../Components/products/WorkersSection";
+import CtaSection from "../Components/products/CtaSection";
 
 const Products = () => {
   return (

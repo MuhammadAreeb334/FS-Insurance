@@ -1,7 +1,7 @@
 // pages/GetQuote.jsx
 import React from "react";
-import HeroSection from "../components/quote/HeroSection";
-import QuoteForm from "../components/quote/QuoteForm";
+import HeroSection from "../Components/quote/HeroSection";
+import QuoteForm from "../Components/quote/QuoteForm";
 // import ContactSection from "../components/quote/ContactSection";
 
 const GetQuote = () => {

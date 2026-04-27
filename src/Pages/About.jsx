@@ -1,12 +1,12 @@
 // pages/About.jsx
 import React from 'react';
-import HeroAbout from '../components/HeroAbout';
-import StatsSection from '../components/StatsSection';
-import IndustriesSection from '../components/IndustriesSection';
-import ProductsSection from '../components/ProductsSection';
-import MonolineSection from '../components/MonolineSection';
-import WhyChooseSection from '../components/WhyChooseSection';
-import CtaSection from '../components/CtaSection';
+import HeroAbout from '../Components/HeroAbout';
+import StatsSection from '../Components/StatsSection';
+import IndustriesSection from '../Components/IndustriesSection';
+import ProductsSection from '../Components/ProductsSection';
+import MonolineSection from '../Components/MonolineSection';
+import WhyChooseSection from '../Components/WhyChooseSection';
+import CtaSection from '../Components/CtaSection';
 
 const About = () => {
   return (
