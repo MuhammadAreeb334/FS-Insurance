@@ -1,8 +1,8 @@
 // pages/Contact.jsx
 import React from "react";
-import HeroSection from "../components/contact/HeroSection";
-import ContactForm from "../components/contact/ContactForm";
-import OfficeLocations from "../components/contact/OfficeLocations";
+import HeroSection from "../Components/contact/HeroSection";
+import ContactForm from "../Components/contact/ContactForm";
+import OfficeLocations from "../Components/contact/OfficeLocations";
 
 const Contact = () => {
   return (
