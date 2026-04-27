@@ -200,7 +200,7 @@ const CommercialCoverage = () => {
                   {/* Content */}
                   <div className="flex flex-col items-center text-center space-y-5 relative z-10">
                     
-                    {/* Icon with Pulse Effect on Mount */}
+                    {/* Icon - Removed hover animation */}
                     <motion.div 
                       className="w-20 h-20 rounded-2xl bg-gray-100 flex items-center justify-center text-[#171818] group-hover:bg-[#171818] group-hover:text-white transition-all duration-400 shadow-md"
                       initial={{ scale: 0, rotate: -180 }}
@@ -212,11 +212,6 @@ const CommercialCoverage = () => {
                         stiffness: 200,
                         damping: 15
                       }}
-                      whileHover={{ 
-                        scale: 1.15,
-                        rotate: [0, -8, 8, -4, 4, 0],
-                        transition: { duration: 0.5 }
-                      }}
                     >
                       {service.icon}
                     </motion.div>
@@ -227,7 +222,6 @@ const CommercialCoverage = () => {
                       initial={{ y: 20, opacity: 0 }}
                       animate={isCardsInView ? { y: 0, opacity: 1 } : {}}
                       transition={{ delay: 0.3 + index * 0.08, duration: 0.4 }}
-                      whileHover={{ scale: 1.03 }}
                     >
                       {service.title}
                     </motion.h3>

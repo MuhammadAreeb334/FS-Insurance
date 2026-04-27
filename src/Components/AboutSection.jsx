@@ -2,8 +2,10 @@ import React from "react";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { ArrowUpRight, Target, Eye, Shield } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const AboutSection = () => {
+  const navigate = useNavigate();
   // Use separate refs for different sections
   const topRef = useRef(null);
   const cardsRef = useRef(null);
@@ -65,7 +67,6 @@ const AboutSection = () => {
   return (
     <section className="bg-white pt-8 pb-4 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
         {/* TOP SECTION - Animates when this part comes into view */}
         <motion.div
           ref={topRef}
@@ -118,6 +119,7 @@ const AboutSection = () => {
               variants={itemVariants}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
+              onClick={() => navigate("/about")}
               className="flex items-center gap-2 md:gap-3 w-fit bg-[#171818] hover:bg-gray-800 text-white font-semibold px-4 md:px-6 py-2 md:py-3 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl text-sm md:text-base"
             >
               More About Us
@@ -144,18 +146,15 @@ const AboutSection = () => {
             variants={containerVariants}
             className="grid sm:grid-cols-2 lg:grid-cols-1 gap-4 md:gap-6"
           >
+            {/* Mission Card - Removed rotate animation from icon */}
             <motion.div
               variants={cardVariants}
               whileHover={{ y: -5, scale: 1.01 }}
               className="bg-gray-50 p-5 md:p-8 rounded-2xl shadow-lg border border-gray-100 hover:shadow-2xl transition-all duration-300 cursor-pointer group"
             >
-              <motion.div
-                whileHover={{ rotate: 360 }}
-                transition={{ duration: 0.5 }}
-                className="w-10 h-10 md:w-14 md:h-14 bg-[#171818] rounded-xl md:rounded-2xl flex items-center justify-center mb-3 md:mb-5 shadow-md"
-              >
+              <div className="w-10 h-10 md:w-14 md:h-14 bg-[#171818] rounded-xl md:rounded-2xl flex items-center justify-center mb-3 md:mb-5 shadow-md">
                 <Target size={18} className="md:w-6 md:h-6 text-white" />
-              </motion.div>
+              </div>
               <h3 className="font-bold text-lg md:text-2xl mb-2 md:mb-3 text-[#171818]">
                 Our Mission
               </h3>
@@ -164,18 +163,15 @@ const AboutSection = () => {
               </p>
             </motion.div>
 
+            {/* Vision Card - Removed rotate animation from icon */}
             <motion.div
               variants={cardVariants}
               whileHover={{ y: -5, scale: 1.01 }}
               className="bg-gray-50 p-5 md:p-8 rounded-2xl shadow-lg border border-gray-100 hover:shadow-2xl transition-all duration-300 cursor-pointer group"
             >
-              <motion.div
-                whileHover={{ rotate: 360 }}
-                transition={{ duration: 0.5 }}
-                className="w-10 h-10 md:w-14 md:h-14 bg-[#171818] rounded-xl md:rounded-2xl flex items-center justify-center mb-3 md:mb-5 shadow-md"
-              >
+              <div className="w-10 h-10 md:w-14 md:h-14 bg-[#171818] rounded-xl md:rounded-2xl flex items-center justify-center mb-3 md:mb-5 shadow-md">
                 <Eye size={18} className="md:w-6 md:h-6 text-white" />
-              </motion.div>
+              </div>
               <h3 className="font-bold text-lg md:text-2xl mb-2 md:mb-3 text-[#171818]">
                 Our Vision
               </h3>
@@ -252,12 +248,12 @@ const AboutSection = () => {
           </span>
           <motion.span
             whileHover={{ x: 5 }}
+            onClick={() => navigate("/quotes")}
             className="text-[#171818] font-semibold cursor-pointer inline-block mt-1 sm:mt-0 sm:ml-1"
           >
             Let's Build Together! →
           </motion.span>
         </motion.div>
-
       </div>
     </section>
   );

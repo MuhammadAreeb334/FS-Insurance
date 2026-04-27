@@ -1,29 +1,29 @@
-import React from 'react';
-import { motion, useInView } from 'framer-motion';
-import { useRef } from 'react';
-import { 
-  Sparkles,
-  ArrowUpRight
-} from 'lucide-react';
+import React from "react";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
+import { Sparkles, ArrowUpRight } from "lucide-react";
 
 const marketClasses = [
-  { 
-    title: "Hotel & Motel", 
+  {
+    title: "Hotel & Motel",
     img: "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&h=800&fit=crop",
-    description: "Comprehensive coverage for hospitality businesses including property, liability, and business interruption.",
-    features: ["Property Protection", "Liability Coverage", "Business Income"]
+    description:
+      "Comprehensive coverage for hospitality businesses including property, liability, and business interruption.",
+    features: ["Property Protection", "Liability Coverage", "Business Income"],
   },
-  { 
-    title: "Restaurant", 
+  {
+    title: "Restaurant",
     img: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=600&h=800&fit=crop",
-    description: "Specialized insurance for restaurants covering equipment, liquor liability, and food spoilage.",
-    features: ["Equipment Breakdown", "Liquor Liability", "Food Spoilage"]
+    description:
+      "Specialized insurance for restaurants covering equipment, liquor liability, and food spoilage.",
+    features: ["Equipment Breakdown", "Liquor Liability", "Food Spoilage"],
   },
-  { 
-    title: "Gas Station", 
+  {
+    title: "Gas Station",
     img: "https://images.unsplash.com/photo-1567777176186-dfa735f1fe20?w=600&h=800&fit=crop",
-    description: "Full-service coverage for gas stations including environmental and pollution liability.",
-    features: ["Environmental Liability", "UST Coverage", "General Liability"]
+    description:
+      "Full-service coverage for gas stations including environmental and pollution liability.",
+    features: ["Environmental Liability", "UST Coverage", "General Liability"],
   },
 ];
 
@@ -52,24 +52,24 @@ const NewMarkets = () => {
       y: 0,
       opacity: 1,
       scale: 1,
-      transition: { 
-        duration: 1.2, 
+      transition: {
+        duration: 1.2,
         ease: [0.25, 0.46, 0.45, 0.94],
         type: "spring",
         stiffness: 80,
-        damping: 15
+        damping: 15,
       },
     },
   };
 
   // Card entrance with 3D pop effect - longer duration
   const cardVariants = {
-    hidden: { 
-      opacity: 0, 
+    hidden: {
+      opacity: 0,
       scale: 0.7,
       rotateY: -40,
       rotateX: 20,
-      y: 80
+      y: 80,
     },
     visible: (i) => ({
       opacity: 1,
@@ -77,13 +77,13 @@ const NewMarkets = () => {
       rotateY: 0,
       rotateX: 0,
       y: 0,
-      transition: { 
+      transition: {
         duration: 1.1,
         delay: i * 0.25,
         ease: [0.21, 0.47, 0.32, 0.98],
         type: "spring",
         stiffness: 100,
-        damping: 16
+        damping: 16,
       },
     }),
   };
@@ -91,7 +91,6 @@ const NewMarkets = () => {
   return (
     <section className="bg-gray-50 py-8 overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        
         {/* HEADER SECTION - Animates when this part comes into view */}
         <motion.div
           ref={headerRef}
@@ -135,8 +134,8 @@ const NewMarkets = () => {
             variants={headerItemVariants}
             className="text-gray-600 max-w-2xl mx-auto leading-relaxed"
           >
-            We are proud to announce new coverage markets specifically 
-            tailored for these high-demand industry classes.
+            We are proud to announce new coverage markets specifically tailored
+            for these high-demand industry classes.
           </motion.p>
         </motion.div>
 
@@ -152,14 +151,13 @@ const NewMarkets = () => {
               variants={cardVariants}
               initial="hidden"
               animate={isCardsInView ? "visible" : "hidden"}
-              whileHover={{ 
+              whileHover={{
                 y: -8,
-                transition: { duration: 0.4 }
+                transition: { duration: 0.4 },
               }}
               className="group relative"
             >
               <div className="relative bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-500 h-full cursor-pointer">
-                
                 {/* Image Section */}
                 <div className="relative overflow-hidden h-64">
                   <motion.img
@@ -170,9 +168,9 @@ const NewMarkets = () => {
                     whileHover={{ scale: 1.1 }}
                     transition={{ duration: 0.7, ease: "easeOut" }}
                   />
-                  
+
                   {/* Animated Gradient Overlay - Longer fade */}
-                  <motion.div 
+                  <motion.div
                     className="absolute inset-0 bg-gradient-to-t from-[#171818]/90 via-[#171818]/40 to-transparent"
                     initial={{ opacity: 0 }}
                     animate={isCardsInView ? { opacity: 1 } : {}}
@@ -180,16 +178,21 @@ const NewMarkets = () => {
                   />
 
                   {/* Title Overlay - Longer slide up */}
-                  <motion.div 
+                  <motion.div
                     className="absolute bottom-0 left-0 right-0 p-6"
                     initial={{ y: 80, opacity: 0 }}
                     animate={isCardsInView ? { y: 0, opacity: 1 } : {}}
-                    transition={{ delay: 0.7 + index * 0.25, duration: 0.8, type: "spring", stiffness: 80 }}
+                    transition={{
+                      delay: 0.7 + index * 0.25,
+                      duration: 0.8,
+                      type: "spring",
+                      stiffness: 80,
+                    }}
                   >
                     <h3 className="text-white text-2xl font-bold">
                       {item.title}
                     </h3>
-                    <motion.div 
+                    <motion.div
                       className="w-12 h-0.5 bg-white/50 mt-2"
                       initial={{ width: 0 }}
                       animate={isCardsInView ? { width: 48 } : {}}
@@ -218,17 +221,24 @@ const NewMarkets = () => {
                       hidden: { opacity: 0 },
                       visible: {
                         opacity: 1,
-                        transition: { staggerChildren: 0.12, delayChildren: 1.0 + index * 0.25 }
-                      }
+                        transition: {
+                          staggerChildren: 0.12,
+                          delayChildren: 1.0 + index * 0.25,
+                        },
+                      },
                     }}
                     className="space-y-2 mb-6"
                   >
                     {item.features.map((feature, idx) => (
-                      <motion.div 
+                      <motion.div
                         key={idx}
                         variants={{
                           hidden: { x: -30, opacity: 0 },
-                          visible: { x: 0, opacity: 1, transition: { duration: 0.5 } }
+                          visible: {
+                            x: 0,
+                            opacity: 1,
+                            transition: { duration: 0.5 },
+                          },
                         }}
                         className="flex items-center gap-2"
                       >
@@ -237,52 +247,23 @@ const NewMarkets = () => {
                       </motion.div>
                     ))}
                   </motion.div>
-
-                  {/* Learn More Button */}
-                  <motion.button
-                    initial={{ y: 30, opacity: 0 }}
-                    animate={isCardsInView ? { y: 0, opacity: 1 } : {}}
-                    transition={{ delay: 1.3 + index * 0.25, duration: 0.6 }}
-                    className="flex items-center justify-between w-full pt-4 border-t border-gray-100 group/btn"
-                  >
-                    <span className="text-xs font-bold text-[#171818] uppercase tracking-wider">
-                      Learn More
-                    </span>
-                    <div className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center group-hover/btn:bg-[#171818] transition-all duration-300">
-                      <ArrowUpRight size={14} className="text-[#171818] group-hover/btn:text-white transition-colors duration-300" />
-                    </div>
-                  </motion.button>
                 </div>
 
                 {/* Top Animated Border - Longer draw */}
-                <motion.div 
+                <motion.div
                   className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#171818] via-[#171818]/50 to-transparent"
                   initial={{ scaleX: 0, opacity: 0 }}
                   animate={isCardsInView ? { scaleX: 1, opacity: 1 } : {}}
-                  transition={{ delay: 0.3 + index * 0.25, duration: 1.2, ease: "easeOut" }}
+                  transition={{
+                    delay: 0.3 + index * 0.25,
+                    duration: 1.2,
+                    ease: "easeOut",
+                  }}
                   style={{ originX: 0 }}
                 />
               </div>
             </motion.div>
           ))}
-        </motion.div>
-
-        {/* BOTTOM CTA SECTION - Animates separately at the end */}
-        <motion.div
-          ref={ctaRef}
-          initial={{ opacity: 0, scale: 0.9, y: 60 }}
-          animate={isCtaInView ? { opacity: 1, scale: 1, y: 0 } : {}}
-          transition={{ delay: 0.3, duration: 0.9, type: "spring", stiffness: 100 }}
-          className="text-center mt-16"
-        >
-          <motion.button
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-            className="inline-flex items-center gap-3 bg-[#171818] hover:bg-gray-800 text-white font-semibold px-10 py-4 rounded-full transition-all duration-300 shadow-xl hover:shadow-2xl"
-          >
-            Explore All Markets
-            <ArrowUpRight size={18} />
-          </motion.button>
         </motion.div>
       </div>
     </section>

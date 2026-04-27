@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 import {
   ChevronLeft,
   ChevronRight,
@@ -10,6 +11,7 @@ import {
 } from "lucide-react";
 
 const HeroSection = () => {
+  const navigate = useNavigate();
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const slides = [
@@ -18,6 +20,7 @@ const HeroSection = () => {
       title: "Protecting What Matters Most",
       subtitle: "Comprehensive insurance coverage tailored just for you",
       buttonText: "Get a Quote",
+      buttonAction: () => navigate("/quotes"),
       bgImage:
         "https://images.unsplash.com/photo-1556742502-ec7c0e9f34b1?w=1920&h=1080&fit=crop",
       features: ["Claims Support", "Instant Coverage", "Best Rates"],
@@ -27,6 +30,7 @@ const HeroSection = () => {
       title: "Protect Your Business",
       subtitle: "Protecting your business with reliable and tailored coverage",
       buttonText: "Learn More",
+      buttonAction: () => navigate("/about"),
       bgImage:
         "https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?w=1920&h=1080&fit=crop",
       features: [
@@ -40,6 +44,7 @@ const HeroSection = () => {
       title: "Drive With Confidence",
       subtitle: "Auto insurance that keeps you safe on the road",
       buttonText: "Get Coverage",
+      buttonAction: () => navigate("/quotes"),
       bgImage:
         "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=1920&h=1080&fit=crop",
       features: [
@@ -149,12 +154,13 @@ const HeroSection = () => {
                   </motion.div>
 
                   <motion.button
+                    onClick={slides[currentSlide].buttonAction}
                     initial={{ y: 20, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
                     transition={{ delay: 0.7 }}
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="bg-white text-gray-900 px-6 md:px-8 py-3 md:py-4 rounded-full font-bold text-base md:text-lg hover:bg-gray-100 transition-all duration-300 shadow-2xl"
+                    className="bg-white text-gray-900 px-6 md:px-8 py-3 md:py-4 rounded-full font-bold text-base md:text-lg hover:bg-gray-100 transition-all duration-300 shadow-2xl cursor-pointer"
                   >
                     {slides[currentSlide].buttonText} →
                   </motion.button>
