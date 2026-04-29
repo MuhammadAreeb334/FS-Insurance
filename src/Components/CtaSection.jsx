@@ -1,4 +1,3 @@
-// components/about/CtaSection.jsx
 import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { useNavigate } from "react-router-dom";
@@ -15,8 +14,10 @@ const CtaSection = () => {
   };
 
   return (
-    <section className="py-12 bg-gradient-to-br from-[#171818] to-gray-800">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 text-center">
+    // Full width background section
+    <section className="w-full bg-gradient-to-br from-[#171818] to-gray-800 py-16 overflow-hidden">
+      {/* Wider centered content container */}
+      <div className="max-w-screen-3xl mx-auto px-6 lg:px-12 text-center">
         <motion.div
           ref={ctaRef}
           variants={headerContainerVariants}
@@ -25,13 +26,13 @@ const CtaSection = () => {
         >
           <motion.h2
             variants={headerItemVariants}
-            className="text-3xl md:text-4xl font-bold text-white mb-4"
+            className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-4"
           >
             Ready to Protect Your Business?
           </motion.h2>
           <motion.p
             variants={headerItemVariants}
-            className="text-white/80 text-lg max-w-2xl mx-auto mb-8"
+            className="text-white/80 text-base md:text-lg max-w-3xl mx-auto mb-8 leading-relaxed"
           >
             Get a personalized quote today and join thousands of satisfied business owners
             who trust us for their insurance needs.
@@ -42,10 +43,10 @@ const CtaSection = () => {
           >
             <button
               onClick={handleGetQuote}
-              className="inline-flex items-center gap-2 bg-white text-[#171818] hover:bg-gray-100 font-bold px-8 py-3 rounded-full transition-all duration-300 shadow-xl hover:shadow-2xl"
+              className="inline-flex items-center gap-2 bg-white text-[#171818] hover:bg-gray-100 font-bold px-8 md:px-10 py-3 md:py-4 rounded-full transition-all duration-300 shadow-xl hover:shadow-2xl text-base md:text-lg"
             >
               Get a Quote
-              <ArrowRight size={18} />
+              <ArrowRight size={18} className="md:w-5 md:h-5" />
             </button>
           </motion.div>
         </motion.div>

@@ -6,7 +6,8 @@ import { headerContainerVariants, headerItemVariants } from "./data";
 
 const HeroSection = () => {
   return (
-    <section className="relative bg-gradient-to-br from-[#171818] to-gray-800 pt-32 pb-12 overflow-hidden">
+    // Full width background
+    <section className="relative w-full bg-gradient-to-br from-[#171818] to-gray-800 pt-32 pb-12 overflow-hidden">
       <div className="absolute inset-0 opacity-10">
         <div
           className="absolute inset-0"
@@ -17,7 +18,8 @@ const HeroSection = () => {
         />
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 text-center">
+      {/* Only changed the container width - kept original padding */}
+      <div className="relative z-10 max-w-screen-3xl mx-auto px-6 lg:px-8 text-center">
         <motion.div
           variants={headerContainerVariants}
           initial="hidden"

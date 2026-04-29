@@ -65,10 +65,12 @@ const ServicesSection = () => {
   };
 
   return (
-    <section className="bg-gray-50 py-8 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+    // Full width background
+    <section className="w-full bg-gray-50 py-8 overflow-hidden">
+      {/* Only changed the container width - kept original padding */}
+      <div className="max-w-screen-3xl mx-auto px-6 lg:px-8">
         
-        {/* HEADER SECTION - Animates when this part comes into view */}
+        {/* HEADER SECTION - No text changes */}
         <motion.div
           ref={headerRef}
           initial="hidden"
@@ -117,7 +119,7 @@ const ServicesSection = () => {
           </motion.p>
         </motion.div>
 
-        {/* CARDS SECTION - Animates separately when scrolled into view */}
+        {/* CARDS SECTION - No grid/text changes */}
         <motion.div
           ref={cardsRef}
           initial="hidden"

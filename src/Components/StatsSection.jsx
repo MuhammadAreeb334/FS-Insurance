@@ -1,4 +1,3 @@
-// components/about/StatsSection.jsx
 import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { stats, statsCardVariants } from './data';
@@ -8,8 +7,10 @@ const StatsSection = () => {
   const isStatsInView = useInView(statsRef, { once: true, amount: 0.2 });
 
   return (
-    <section className="py-8 bg-gray-50">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+    // Full width background
+    <section className="w-full py-8 bg-gray-50">
+      {/* Only changed the container width - kept original padding */}
+      <div className="max-w-screen-3xl mx-auto px-6 lg:px-8">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6" ref={statsRef}>
           {stats.map((stat, index) => (
             <motion.div

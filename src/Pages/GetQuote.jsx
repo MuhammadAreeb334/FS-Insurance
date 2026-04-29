@@ -1,8 +1,6 @@
-// pages/GetQuote.jsx
 import React from "react";
 import HeroSection from "../Components/quote/HeroSection";
 import QuoteForm from "../Components/quote/QuoteForm";
-// import ContactSection from "../components/quote/ContactSection";
 
 const GetQuote = () => {
   const handleStartQuote = () => {
@@ -15,7 +13,6 @@ const GetQuote = () => {
     <div className="bg-white overflow-hidden">
       <HeroSection onStartQuote={handleStartQuote} />
       <QuoteForm />
-      {/* <ContactSection /> */}
     </div>
   );
 };

@@ -65,15 +65,16 @@ const AboutSection = () => {
   };
 
   return (
-    <section className="bg-white pt-8 pb-4 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* TOP SECTION - Animates when this part comes into view */}
+    <section className="w-full bg-white pt-12 pb-8 overflow-hidden">
+      <div className="max-w-screen-3xl mx-auto px-6 lg:px-12">
+        
+        {/* TOP SECTION */}
         <motion.div
           ref={topRef}
           initial="hidden"
           animate={isTopInView ? "visible" : "hidden"}
           variants={containerVariants}
-          className="grid lg:grid-cols-2 gap-8 md:gap-12 items-start mb-12 md:mb-16"
+          className="grid lg:grid-cols-2 gap-12 xl:gap-20 items-center mb-16 md:mb-20"
         >
           <motion.div variants={itemVariants}>
             <motion.div
@@ -88,7 +89,7 @@ const AboutSection = () => {
 
             <motion.h2
               variants={itemVariants}
-              className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 leading-tight"
+              className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-900 leading-tight"
             >
               Expert insurance guidance you{" "}
               <span className="text-[#171818] relative inline-block">
@@ -134,19 +135,18 @@ const AboutSection = () => {
           </motion.div>
         </motion.div>
 
-        {/* CARDS SECTION - Animates when this part comes into view (separately) */}
-        <motion.div
-          ref={cardsRef}
-          initial="hidden"
-          animate={isCardsInView ? "visible" : "hidden"}
-          variants={containerVariants}
-          className="flex flex-col lg:grid lg:grid-cols-3 gap-6 md:gap-8"
-        >
+        {/* CARDS SECTION - Fixed responsive layout */}
+        <div className="grid lg:grid-cols-3 gap-8 xl:gap-12">
+          
+          {/* Left Column - Cards */}
           <motion.div
+            ref={cardsRef}
+            initial="hidden"
+            animate={isCardsInView ? "visible" : "hidden"}
             variants={containerVariants}
-            className="grid sm:grid-cols-2 lg:grid-cols-1 gap-4 md:gap-6"
+            className="space-y-6 xl:space-y-8"
           >
-            {/* Mission Card - Removed rotate animation from icon */}
+            {/* Mission Card */}
             <motion.div
               variants={cardVariants}
               whileHover={{ y: -5, scale: 1.01 }}
@@ -163,7 +163,7 @@ const AboutSection = () => {
               </p>
             </motion.div>
 
-            {/* Vision Card - Removed rotate animation from icon */}
+            {/* Vision Card */}
             <motion.div
               variants={cardVariants}
               whileHover={{ y: -5, scale: 1.01 }}
@@ -181,7 +181,7 @@ const AboutSection = () => {
             </motion.div>
           </motion.div>
 
-          {/* IMAGES SECTION - Animates separately */}
+          {/* Right Column - Images - Fixed for lg/xl devices */}
           <motion.div
             ref={imagesRef}
             initial="hidden"
@@ -189,17 +189,19 @@ const AboutSection = () => {
             variants={containerVariants}
             className="lg:col-span-2"
           >
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 xl:gap-8">
               <motion.div
                 variants={imageVariants}
                 whileHover={{ scale: 1.02 }}
-                className="relative rounded-2xl overflow-hidden shadow-xl group aspect-[4/3] sm:aspect-square"
+                className="relative rounded-2xl overflow-hidden shadow-xl group"
               >
-                <img
-                  src="https://images.unsplash.com/photo-1556742502-ec7c0e9f34b1?w=800&h=800&fit=crop"
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                  alt="Insurance consultation"
-                />
+                <div className="aspect-[4/3] w-full">
+                  <img
+                    src="https://images.unsplash.com/photo-1556742502-ec7c0e9f34b1?w=800&h=800&fit=crop"
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    alt="Insurance consultation"
+                  />
+                </div>
                 <motion.div
                   initial={{ opacity: 0 }}
                   whileHover={{ opacity: 1 }}
@@ -214,13 +216,15 @@ const AboutSection = () => {
               <motion.div
                 variants={imageVariants}
                 whileHover={{ scale: 1.02 }}
-                className="relative rounded-2xl overflow-hidden shadow-xl group aspect-[4/3] sm:aspect-square"
+                className="relative rounded-2xl overflow-hidden shadow-xl group"
               >
-                <img
-                  src="https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?w=800&h=800&fit=crop"
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                  alt="Happy clients"
-                />
+                <div className="aspect-[4/3] w-full">
+                  <img
+                    src="https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?w=800&h=800&fit=crop"
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    alt="Happy clients"
+                  />
+                </div>
                 <motion.div
                   initial={{ opacity: 0 }}
                   whileHover={{ opacity: 1 }}
@@ -233,15 +237,15 @@ const AboutSection = () => {
               </motion.div>
             </div>
           </motion.div>
-        </motion.div>
+        </div>
 
-        {/* FOOTER SECTION - Animates at the end */}
+        {/* FOOTER SECTION */}
         <motion.div
           ref={footerRef}
           variants={footerVariants}
           initial="hidden"
           animate={isFooterInView ? "visible" : "hidden"}
-          className="text-center mt-8 md:mt-10 text-xs md:text-sm px-4"
+          className="text-center mt-12 md:mt-16 text-xs md:text-sm"
         >
           <span className="text-gray-600 block sm:inline">
             Smart, Scalable, and High-Performance Insurance Company –
@@ -254,6 +258,7 @@ const AboutSection = () => {
             Let's Build Together! →
           </motion.span>
         </motion.div>
+
       </div>
     </section>
   );

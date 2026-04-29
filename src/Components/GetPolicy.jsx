@@ -67,8 +67,10 @@ const GetPolicy = () => {
   };
 
   return (
-    <section className="bg-gradient-to-br from-[#171818] to-gray-800 py-8 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+    // Full width background section
+    <section className="w-full bg-gradient-to-br from-[#171818] to-gray-800 py-12 overflow-hidden">
+      {/* Wider centered content container */}
+      <div className="max-w-screen-2xl mx-auto px-6 lg:px-12">
         <div className="relative">
           {/* Background Decorative Elements - Always animated */}
           <motion.div
@@ -117,14 +119,14 @@ const GetPolicy = () => {
               animate={isTitleInView ? "visible" : "hidden"}
             >
               <motion.h2
-                className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-3 leading-tight"
+                className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-3 leading-tight"
               >
                 Get a Policy
               </motion.h2>
 
               {/* Description */}
               <motion.p
-                className="text-white/80 max-w-2xl mx-auto leading-relaxed text-base mb-6"
+                className="text-white/80 max-w-3xl mx-auto leading-relaxed text-base md:text-lg mb-6"
               >
                 Get your personalized insurance quote in minutes. Fast, easy, and
                 completely free. Protect what matters most today.
@@ -143,10 +145,10 @@ const GetPolicy = () => {
                   variants={featureVariants}
                   initial="hidden"
                   animate={isFeaturesInView ? "visible" : "hidden"}
-                  className="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-3 py-1.5 rounded-full border border-white/20"
+                  className="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/20"
                 >
                   <div className="text-white">{feature.icon}</div>
-                  <span className="text-white text-xs font-medium">
+                  <span className="text-white text-sm font-medium">
                     {feature.text}
                   </span>
                 </motion.div>
@@ -159,13 +161,13 @@ const GetPolicy = () => {
               variants={itemVariants}
               initial="hidden"
               animate={isCtaInView ? "visible" : "hidden"}
-              className="flex flex-col sm:flex-row gap-3 justify-center"
+              className="flex flex-col sm:flex-row gap-4 justify-center"
             >
               <motion.button
                 onClick={handleGetQuote}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="inline-flex items-center gap-2 bg-white text-[#171818] hover:bg-gray-100 font-bold px-6 py-3 rounded-full transition-all duration-300 shadow-xl hover:shadow-2xl text-base"
+                className="inline-flex items-center gap-2 bg-white text-[#171818] hover:bg-gray-100 font-bold px-8 md:px-10 py-3 md:py-4 rounded-full transition-all duration-300 shadow-xl hover:shadow-2xl text-base md:text-lg"
               >
                 Get a Quote Now
                 <motion.div
@@ -176,7 +178,7 @@ const GetPolicy = () => {
                     ease: "easeInOut",
                   }}
                 >
-                  <ArrowRight size={18} />
+                  <ArrowRight size={18} className="md:w-5 md:h-5" />
                 </motion.div>
               </motion.button>
             </motion.div>
@@ -189,7 +191,7 @@ const GetPolicy = () => {
               transition={{ duration: 0.6 }}
               className="mt-8 pt-6 border-t border-white/10"
             >
-              <p className="text-white/40 text-xs">
+              <p className="text-white/40 text-xs md:text-sm">
                 Join over 5,000+ satisfied customers • No obligation • Free
                 consultation
               </p>

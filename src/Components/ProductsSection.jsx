@@ -1,4 +1,3 @@
-// components/about/ProductsSection.jsx
 import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { Shield, Phone } from "lucide-react";
@@ -13,7 +12,7 @@ const ProductsSection = () => {
   };
 
   return (
-    <>
+    <div className="w-full">
       <motion.div
         ref={productsRef}
         variants={headerContainerVariants}
@@ -35,13 +34,14 @@ const ProductsSection = () => {
         </motion.h2>
         <motion.p
           variants={headerItemVariants}
-          className="text-gray-600 mb-6 leading-relaxed"
+          className="text-gray-600 mb-6 leading-relaxed max-w-3xl"
         >
           Our core product is the commercial package. Coverage differs depending upon 
           the specific package, but typically consists of:
         </motion.p>
       </motion.div>
 
+      {/* Products grid - No changes to grid layout */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6">
         {products.map((product, index) => (
           <motion.div
@@ -61,6 +61,7 @@ const ProductsSection = () => {
         ))}
       </div>
 
+      {/* Call to action card - No changes */}
       <motion.div
         variants={statsCardVariants}
         initial="hidden"
@@ -79,7 +80,7 @@ const ProductsSection = () => {
           +1 954-572-0299
         </button>
       </motion.div>
-    </>
+    </div>
   );
 };
 

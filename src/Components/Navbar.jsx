@@ -2,8 +2,6 @@ import { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Phone } from "lucide-react";
-
-// import logo from "../assets/logo.png";
 import logo from "../assets/logo.jpeg";
 
 const Navbar = () => {
@@ -65,9 +63,10 @@ const Navbar = () => {
             : "bg-[#171818] py-5"
         }`}
       >
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+        {/* Only changed the container width - kept original padding */}
+        <div className="max-w-screen-3xl mx-auto px-6 lg:px-8">
           <div className="flex justify-between items-center">
-            {/* Logo Section */}
+            {/* Logo Section - No changes */}
             <div className="flex items-center gap-3">
               <Link to="/" className="flex items-center gap-3 group">
                 <img
@@ -86,7 +85,7 @@ const Navbar = () => {
               </Link>
             </div>
 
-            {/* Desktop Navigation */}
+            {/* Desktop Navigation - No changes to font/text */}
             <div className="hidden lg:flex items-center gap-1">
               {navLinks.map((link) => (
                 <div key={link.name} className="relative">
@@ -115,7 +114,7 @@ const Navbar = () => {
               ))}
             </div>
 
-            {/* Right Section */}
+            {/* Right Section - No changes to font/text */}
             <div className="flex items-center gap-6">
               <div className="hidden md:flex items-center gap-2 text-white">
                 <div className="flex flex-col items-end">
@@ -153,7 +152,7 @@ const Navbar = () => {
           </div>
         </div>
 
-        {/* Mobile Menu Overlay */}
+        {/* Mobile Menu Overlay - No changes */}
         <AnimatePresence>
           {isMobileMenuOpen && (
             <>
@@ -197,6 +196,40 @@ const Navbar = () => {
                       </Link>
                     </motion.div>
                   ))}
+                  
+                  {/* Mobile Call Button */}
+                  <motion.div
+                    initial={{ x: -30, opacity: 0 }}
+                    animate={{ x: 0, opacity: 1 }}
+                    transition={{ delay: 0.25 }}
+                    className="pt-4 mt-4 border-t border-gray-200"
+                  >
+                    <a
+                      href="tel:+19545720299"
+                      onClick={closeMobileMenu}
+                      className="flex items-center justify-center gap-2 w-full bg-[#171818] text-white py-3 px-4 rounded-lg font-bold"
+                    >
+                      <Phone className="w-4 h-4" />
+                      Call +1 (954) 572-0299
+                    </a>
+                  </motion.div>
+                  
+                  {/* Mobile Quote Button */}
+                  <motion.div
+                    initial={{ x: -30, opacity: 0 }}
+                    animate={{ x: 0, opacity: 1 }}
+                    transition={{ delay: 0.3 }}
+                  >
+                    <button
+                      onClick={() => {
+                        closeMobileMenu();
+                        handleGetQuote();
+                      }}
+                      className="w-full bg-gray-100 text-[#171818] hover:bg-gray-200 py-3 px-4 rounded-lg font-bold transition-all duration-300"
+                    >
+                      GET A QUOTE
+                    </button>
+                  </motion.div>
                 </div>
               </motion.div>
             </>

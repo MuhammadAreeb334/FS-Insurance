@@ -89,9 +89,12 @@ const NewMarkets = () => {
   };
 
   return (
-    <section className="bg-gray-50 py-8 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        {/* HEADER SECTION - Animates when this part comes into view */}
+    // Full width background
+    <section className="w-full bg-gray-50 py-8 overflow-hidden">
+      {/* Only changed the container width - kept original padding */}
+      <div className="max-w-screen-3xl mx-auto px-6 lg:px-8">
+        
+        {/* HEADER SECTION - No text changes */}
         <motion.div
           ref={headerRef}
           variants={headerContainerVariants}
@@ -139,7 +142,7 @@ const NewMarkets = () => {
           </motion.p>
         </motion.div>
 
-        {/* CARDS GRID SECTION - Animates separately when scrolled into view */}
+        {/* CARDS GRID SECTION - No text/grid changes */}
         <motion.div
           ref={cardsRef}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
@@ -169,7 +172,7 @@ const NewMarkets = () => {
                     transition={{ duration: 0.7, ease: "easeOut" }}
                   />
 
-                  {/* Animated Gradient Overlay - Longer fade */}
+                  {/* Animated Gradient Overlay */}
                   <motion.div
                     className="absolute inset-0 bg-gradient-to-t from-[#171818]/90 via-[#171818]/40 to-transparent"
                     initial={{ opacity: 0 }}
@@ -177,7 +180,7 @@ const NewMarkets = () => {
                     transition={{ delay: 0.4 + index * 0.25, duration: 1.0 }}
                   />
 
-                  {/* Title Overlay - Longer slide up */}
+                  {/* Title Overlay */}
                   <motion.div
                     className="absolute bottom-0 left-0 right-0 p-6"
                     initial={{ y: 80, opacity: 0 }}
@@ -201,7 +204,7 @@ const NewMarkets = () => {
                   </motion.div>
                 </div>
 
-                {/* Content Section - Longer stagger */}
+                {/* Content Section */}
                 <div className="p-6">
                   {/* Description */}
                   <motion.p
@@ -213,7 +216,7 @@ const NewMarkets = () => {
                     {item.description}
                   </motion.p>
 
-                  {/* Features List - Longer staggered children */}
+                  {/* Features List */}
                   <motion.div
                     initial="hidden"
                     animate={isCardsInView ? "visible" : "hidden"}
@@ -249,7 +252,7 @@ const NewMarkets = () => {
                   </motion.div>
                 </div>
 
-                {/* Top Animated Border - Longer draw */}
+                {/* Top Animated Border */}
                 <motion.div
                   className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#171818] via-[#171818]/50 to-transparent"
                   initial={{ scaleX: 0, opacity: 0 }}

@@ -13,8 +13,10 @@ const OfficeLocations = () => {
   };
 
   return (
-    <section className="py-4 bg-white" ref={ref}>
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+    // Full width background
+    <section className="w-full py-4 bg-white" ref={ref}>
+      {/* Only changed the container width - kept original padding */}
+      <div className="max-w-screen-3xl mx-auto px-6 lg:px-8">
         <motion.div
           variants={cardVariants}
           initial="hidden"

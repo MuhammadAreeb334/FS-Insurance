@@ -1,4 +1,3 @@
-// pages/Products.jsx
 import React from "react";
 import HeroSection from "../Components/products/HeroSection";
 import ConvenienceSection from "../Components/products/ConvenienceSection";

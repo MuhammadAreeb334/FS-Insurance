@@ -1,4 +1,3 @@
-// components/products/CtaSection.jsx
 import React, { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { useNavigate } from "react-router-dom";
@@ -15,8 +14,10 @@ const CtaSection = () => {
   };
 
   return (
-    <section className="py-12 bg-gradient-to-br from-[#171818] to-gray-800">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 text-center">
+    // Full width background
+    <section className="w-full py-12 bg-gradient-to-br from-[#171818] to-gray-800">
+      {/* Only changed the container width - kept original padding */}
+      <div className="max-w-screen-3xl mx-auto px-6 lg:px-8 text-center">
         <motion.div
           ref={ctaRef}
           variants={headerContainerVariants}

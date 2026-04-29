@@ -1,4 +1,3 @@
-// pages/Contact.jsx
 import React from "react";
 import HeroSection from "../Components/contact/HeroSection";
 import ContactForm from "../Components/contact/ContactForm";

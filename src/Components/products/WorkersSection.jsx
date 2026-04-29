@@ -1,4 +1,3 @@
-// components/products/WorkersSection.jsx
 import React, { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { HardHat } from "lucide-react";
@@ -12,8 +11,10 @@ const WorkersSection = () => {
   const isInView = useInView(ref, { once: true, amount: 0.1 });
 
   return (
-    <section className="py-4 bg-gray-50">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+    // Full width background
+    <section className="w-full py-4 bg-gray-50">
+      {/* Only changed the container width - kept original padding */}
+      <div className="max-w-screen-3xl mx-auto px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <motion.div
             ref={ref}

@@ -94,10 +94,12 @@ const CommercialCoverage = () => {
   };
 
   return (
-    <section className="bg-white py-8 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+    // Full width background section
+    <section className="w-full bg-white py-12 overflow-hidden">
+      {/* Wider centered content container */}
+      <div className="max-w-screen-3xl mx-auto px-6 lg:px-12">
         
-        {/* HEADER SECTION - Animates when this part comes into view */}
+        {/* HEADER SECTION */}
         <motion.div
           ref={headerRef}
           variants={headerContainerVariants}
@@ -121,10 +123,10 @@ const CommercialCoverage = () => {
             </span>
           </motion.div>
 
-          {/* Title with letter by letter animation */}
+          {/* Title */}
           <motion.h2
             variants={headerItemVariants}
-            className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#171818] mb-4 leading-tight"
+            className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-[#171818] mb-4 leading-tight"
           >
             Commercial{" "}
             <span className="relative inline-block">
@@ -141,17 +143,17 @@ const CommercialCoverage = () => {
           {/* Description */}
           <motion.p
             variants={headerItemVariants}
-            className="text-gray-600 max-w-2xl mx-auto leading-relaxed"
+            className="text-gray-600 max-w-3xl mx-auto leading-relaxed text-base md:text-lg"
           >
             Our core product is the commercial package. Coverage differs depending upon the specific package, 
             but typically consists of the following.
           </motion.p>
         </motion.div>
 
-        {/* CARDS GRID SECTION - Animates separately when scrolled into view */}
+        {/* CARDS GRID SECTION - Wider grid with better spacing */}
         <motion.div
           ref={cardsRef}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 xl:gap-10"
         >
           {commercialServices.map((service, index) => (
             <motion.div
@@ -174,7 +176,7 @@ const CommercialCoverage = () => {
                 custom={index}
                 className="h-full"
               >
-                <div className="relative bg-white border border-gray-100 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-shadow duration-500 h-full cursor-pointer overflow-hidden">
+                <div className="relative bg-white border border-gray-100 rounded-2xl p-6 md:p-8 shadow-lg hover:shadow-2xl transition-shadow duration-500 h-full cursor-pointer overflow-hidden">
                   
                   {/* Animated Background Gradient */}
                   <motion.div 
@@ -200,7 +202,7 @@ const CommercialCoverage = () => {
                   {/* Content */}
                   <div className="flex flex-col items-center text-center space-y-5 relative z-10">
                     
-                    {/* Icon - Removed hover animation */}
+                    {/* Icon */}
                     <motion.div 
                       className="w-20 h-20 rounded-2xl bg-gray-100 flex items-center justify-center text-[#171818] group-hover:bg-[#171818] group-hover:text-white transition-all duration-400 shadow-md"
                       initial={{ scale: 0, rotate: -180 }}
@@ -216,9 +218,9 @@ const CommercialCoverage = () => {
                       {service.icon}
                     </motion.div>
                     
-                    {/* Title with slide up */}
+                    {/* Title */}
                     <motion.h3 
-                      className="text-xl font-bold text-[#171818] leading-snug"
+                      className="text-xl md:text-2xl font-bold text-[#171818] leading-snug"
                       initial={{ y: 20, opacity: 0 }}
                       animate={isCardsInView ? { y: 0, opacity: 1 } : {}}
                       transition={{ delay: 0.3 + index * 0.08, duration: 0.4 }}

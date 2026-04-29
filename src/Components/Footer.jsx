@@ -1,10 +1,10 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Phone, Mail, MapPin, Shield, ChevronRight } from "lucide-react";
 
 const Footer = () => {
-  // Separate refs for each major section
   const topSectionRef = useRef(null);
   const siteLinksRef = useRef(null);
   const getInTouchRef = useRef(null);
@@ -147,7 +147,8 @@ const Footer = () => {
         />
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 pt-12 pb-0">
+      {/* Main Footer Content - Wider container */}
+      <div className="relative z-10 max-w-screen-3xl mx-auto px-6 lg:px-12 pt-12 pb-0">
         
         {/* TOP SECTION - Animates first */}
         <motion.div
@@ -161,7 +162,7 @@ const Footer = () => {
             initial={{ y: -40, opacity: 0 }}
             animate={isTopSectionInView ? { y: 0, opacity: 1 } : {}}
             transition={{ delay: 0.2, duration: 0.8, ease: "easeOut" }}
-            className="text-2xl md:text-3xl font-semibold text-gray-900 mb-3"
+            className="text-2xl md:text-3xl lg:text-4xl font-semibold text-gray-900 mb-3"
           >
             Have any Question? Ask us anything, we'd love to answer!
           </motion.h2>
@@ -170,15 +171,15 @@ const Footer = () => {
             initial="hidden"
             animate={isTopSectionInView ? "visible" : "hidden"}
             href="tel:+19545720299"
-            className="inline-flex items-center gap-2 text-2xl md:text-3xl font-bold text-gray-900 hover:text-gray-600 transition-colors"
+            className="inline-flex items-center gap-2 text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 hover:text-gray-600 transition-colors"
           >
-            <Phone size={28} />
+            <Phone size={28} className="lg:w-8 lg:h-8" />
             +1-954-572-0299
           </motion.a>
         </motion.div>
 
         {/* Main Footer Grid - 5 Columns with progressive animation */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 mb-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-10 xl:gap-12 mb-10">
           
           {/* Column 1: Site Links - Animates second */}
           <motion.div
@@ -192,7 +193,7 @@ const Footer = () => {
               initial={{ x: -30, opacity: 0 }}
               animate={isSiteLinksInView ? { x: 0, opacity: 1 } : {}}
               transition={{ delay: 0.2, duration: 0.7 }}
-              className="text-lg font-semibold mb-4 text-gray-900"
+              className="text-lg lg:text-xl font-semibold mb-4 text-gray-900"
             >
               SITE LINKS
             </motion.h3>
@@ -208,16 +209,16 @@ const Footer = () => {
                   variants={listItemVariants}
                   className="group"
                 >
-                  <a
-                    href={link.path}
-                    className="flex items-center gap-1 text-gray-500 hover:text-gray-900 transition-colors duration-300 text-sm"
+                  <Link
+                    to={link.path}
+                    className="flex items-center gap-1 text-gray-500 hover:text-gray-900 transition-colors duration-300 text-sm lg:text-base"
                   >
                     <ChevronRight
                       size={12}
                       className="opacity-0 group-hover:opacity-100 transition-all duration-300"
                     />
                     <span>{link.name}</span>
-                  </a>
+                  </Link>
                 </motion.li>
               ))}
             </motion.ul>
@@ -235,7 +236,7 @@ const Footer = () => {
               initial={{ x: -20, y: -20, opacity: 0 }}
               animate={isGetInTouchInView ? { x: 0, y: 0, opacity: 1 } : {}}
               transition={{ delay: 0.3, duration: 0.7 }}
-              className="text-lg font-semibold mb-4 text-gray-900"
+              className="text-lg lg:text-xl font-semibold mb-4 text-gray-900"
             >
               GET IN TOUCH
             </motion.h3>
@@ -243,7 +244,7 @@ const Footer = () => {
               initial={{ opacity: 0 }}
               animate={isGetInTouchInView ? { opacity: 1 } : {}}
               transition={{ delay: 0.4, duration: 0.6 }}
-              className="text-gray-500 text-sm mb-3"
+              className="text-gray-500 text-sm lg:text-base mb-3"
             >
               We're here to listen:
             </motion.p>
@@ -260,9 +261,9 @@ const Footer = () => {
                 >
                   <a
                     href={item.href}
-                    className="flex items-center gap-2 text-gray-500 hover:text-gray-900 transition-colors duration-300 text-sm"
+                    className="flex items-center gap-2 text-gray-500 hover:text-gray-900 transition-colors duration-300 text-sm lg:text-base"
                   >
-                    <item.icon size={14} />
+                    <item.icon size={14} className="lg:w-4 lg:h-4" />
                     <span>{item.text}</span>
                   </a>
                 </motion.li>
@@ -282,7 +283,7 @@ const Footer = () => {
               initial={{ y: -30, opacity: 0 }}
               animate={isGeorgiaInView ? { y: 0, opacity: 1 } : {}}
               transition={{ delay: 0.4, duration: 0.7 }}
-              className="text-lg font-semibold mb-4 text-gray-900"
+              className="text-lg lg:text-xl font-semibold mb-4 text-gray-900"
             >
               GEORGIA OFFICE
             </motion.h3>
@@ -292,7 +293,7 @@ const Footer = () => {
               animate={isGeorgiaInView ? "visible" : "hidden"}
               className="space-y-2"
             >
-              <motion.p variants={listItemVariants} className="text-gray-500 text-sm leading-relaxed">
+              <motion.p variants={listItemVariants} className="text-gray-500 text-sm lg:text-base leading-relaxed">
                 {georgiaOffice.address}
                 <br />
                 {georgiaOffice.city}
@@ -302,7 +303,7 @@ const Footer = () => {
                   key={idx}
                   variants={listItemVariants}
                   href={`tel:${phone.replace(/-/g, "")}`}
-                  className="block text-gray-500 hover:text-gray-900 transition-colors text-sm"
+                  className="block text-gray-500 hover:text-gray-900 transition-colors text-sm lg:text-base"
                 >
                   {phone}
                 </motion.a>
@@ -322,7 +323,7 @@ const Footer = () => {
               initial={{ x: 20, y: -20, opacity: 0 }}
               animate={isFloridaInView ? { x: 0, y: 0, opacity: 1 } : {}}
               transition={{ delay: 0.5, duration: 0.7 }}
-              className="text-lg font-semibold mb-4 text-gray-900"
+              className="text-lg lg:text-xl font-semibold mb-4 text-gray-900"
             >
               FLORIDA OFFICE
             </motion.h3>
@@ -332,7 +333,7 @@ const Footer = () => {
               animate={isFloridaInView ? "visible" : "hidden"}
               className="space-y-2"
             >
-              <motion.p variants={listItemVariants} className="text-gray-500 text-sm leading-relaxed">
+              <motion.p variants={listItemVariants} className="text-gray-500 text-sm lg:text-base leading-relaxed">
                 {floridaOffice.address}
                 <br />
                 {floridaOffice.city}
@@ -342,7 +343,7 @@ const Footer = () => {
                   key={idx}
                   variants={listItemVariants}
                   href={`tel:${phone.replace(/-/g, "")}`}
-                  className="block text-gray-500 hover:text-gray-900 transition-colors text-sm"
+                  className="block text-gray-500 hover:text-gray-900 transition-colors text-sm lg:text-base"
                 >
                   {phone}
                 </motion.a>
@@ -362,7 +363,7 @@ const Footer = () => {
               initial={{ x: 30, opacity: 0 }}
               animate={isTexasInView ? { x: 0, opacity: 1 } : {}}
               transition={{ delay: 0.6, duration: 0.7 }}
-              className="text-lg font-semibold mb-4 text-gray-900"
+              className="text-lg lg:text-xl font-semibold mb-4 text-gray-900"
             >
               TEXAS OFFICE
             </motion.h3>
@@ -372,7 +373,7 @@ const Footer = () => {
               animate={isTexasInView ? "visible" : "hidden"}
               className="space-y-2"
             >
-              <motion.p variants={listItemVariants} className="text-gray-500 text-sm leading-relaxed">
+              <motion.p variants={listItemVariants} className="text-gray-500 text-sm lg:text-base leading-relaxed">
                 {texasOffice.address}
                 <br />
                 {texasOffice.city}
@@ -382,7 +383,7 @@ const Footer = () => {
                   key={idx}
                   variants={listItemVariants}
                   href={`tel:${phone.replace(/-/g, "")}`}
-                  className="block text-gray-500 hover:text-gray-900 transition-colors text-sm"
+                  className="block text-gray-500 hover:text-gray-900 transition-colors text-sm lg:text-base"
                 >
                   {phone}
                 </motion.a>
@@ -392,9 +393,9 @@ const Footer = () => {
         </div>
       </div>
 
-      {/* Bottom Copyright - Animates seventh (last) */}
-      <div className="bg-[#0f0f0f] -mx-6 lg:-mx-8 mt-6">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+      {/* Bottom Copyright - Wider container */}
+      <div className="w-full bg-[#0f0f0f] mt-6">
+        <div className="max-w-screen-2xl mx-auto px-6 lg:px-12">
           <motion.div
             ref={copyrightRef}
             variants={copyrightVariants}
@@ -402,7 +403,7 @@ const Footer = () => {
             animate={isCopyrightInView ? "visible" : "hidden"}
             className="text-center py-6"
           >
-            <p className="text-gray-400 text-xs">
+            <p className="text-gray-400 text-xs lg:text-sm">
               © 2026 F&S Agency. All rights reserved.
             </p>
           </motion.div>

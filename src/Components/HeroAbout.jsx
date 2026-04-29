@@ -1,4 +1,3 @@
-// components/about/HeroSection.jsx
 import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { useNavigate } from "react-router-dom";
@@ -19,7 +18,8 @@ const HeroAbout = () => {
   };
 
   return (
-    <section className="relative bg-gradient-to-br from-[#171818] to-gray-800 pt-32 pb-12 overflow-hidden">
+    // Full width background section
+    <section className="relative w-full bg-gradient-to-br from-[#171818] to-gray-800 pt-32 pb-12 overflow-hidden">
       <div className="absolute inset-0 opacity-10">
         <div className="absolute inset-0" style={{
           backgroundImage: `radial-gradient(circle at 2px 2px, #fff 1px, transparent 1px)`,
@@ -27,7 +27,8 @@ const HeroAbout = () => {
         }} />
       </div>
       
-      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 text-center">
+      {/* Wider centered content container with max-w-screen-3xl */}
+      <div className="relative z-10 max-w-screen-3xl mx-auto px-6 lg:px-12 xl:px-16 text-center">
         <motion.div
           ref={heroRef}
           variants={headerContainerVariants}
@@ -49,7 +50,7 @@ const HeroAbout = () => {
 
           <motion.h1
             variants={headerItemVariants}
-            className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight"
+            className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl 3xl:text-8xl font-bold text-white mb-6 leading-tight"
           >
             Providing Commercial Insurance Services
             <span className="block text-white/90">Since 1996</span>
@@ -57,7 +58,7 @@ const HeroAbout = () => {
 
           <motion.p
             variants={headerItemVariants}
-            className="text-white/80 text-lg max-w-3xl mx-auto leading-relaxed"
+            className="text-white/80 text-base md:text-lg xl:text-xl max-w-4xl mx-auto leading-relaxed"
           >
             Global Underwriters provides specialty niche products and service solutions 
             through industry's leading insurance companies and program administrators.
@@ -69,16 +70,16 @@ const HeroAbout = () => {
           >
             <button
               onClick={handleGetQuote}
-              className="inline-flex items-center gap-2 bg-white text-[#171818] hover:bg-gray-100 font-bold px-8 py-3 rounded-full transition-all duration-300 shadow-xl hover:shadow-2xl"
+              className="inline-flex items-center gap-2 bg-white text-[#171818] hover:bg-gray-100 font-bold px-6 md:px-8 xl:px-10 py-2 md:py-3 xl:py-4 rounded-full transition-all duration-300 shadow-xl hover:shadow-2xl text-sm md:text-base xl:text-lg"
             >
               Get a Quote
-              <ArrowRight size={18} />
+              <ArrowRight size={16} className="md:w-5 md:h-5 xl:w-6 xl:h-6" />
             </button>
             <button
               onClick={handleCall}
-              className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-white/20 font-bold px-8 py-3 rounded-full transition-all duration-300"
+              className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-white/20 font-bold px-6 md:px-8 xl:px-10 py-2 md:py-3 xl:py-4 rounded-full transition-all duration-300 text-sm md:text-base xl:text-lg"
             >
-              <Phone size={18} />
+              <Phone size={16} className="md:w-5 md:h-5 xl:w-6 xl:h-6" />
               Call Us Now
             </button>
           </motion.div>
