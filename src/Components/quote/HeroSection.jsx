@@ -21,8 +21,8 @@ const HeroSection = ({ onStartQuote }) => {
         />
       </div>
 
-      {/* Only changed the container width - kept original padding */}
-      <div className="relative z-10 max-w-screen-3xl mx-auto px-6 lg:px-8 text-center">
+      {/* Wider centered content container with max-w-screen-3xl */}
+      <div className="relative z-10 max-w-screen-3xl mx-auto px-6 lg:px-12 xl:px-16 text-center">
         <motion.div
           variants={headerContainerVariants}
           initial="hidden"
@@ -45,7 +45,7 @@ const HeroSection = ({ onStartQuote }) => {
 
           <motion.h1
             variants={headerItemVariants}
-            className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight"
+            className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl 3xl:text-8xl font-bold text-white mb-6 leading-tight"
           >
             Get a Quote
             <span className="block text-white/90">
@@ -55,7 +55,7 @@ const HeroSection = ({ onStartQuote }) => {
 
           <motion.p
             variants={headerItemVariants}
-            className="text-white/80 text-lg max-w-2xl mx-auto leading-relaxed"
+            className="text-white/80 text-base md:text-lg xl:text-xl max-w-4xl mx-auto leading-relaxed"
           >
             Fill out the form below and our insurance experts will get back to
             you with a personalized quote within 24 hours.
@@ -67,16 +67,16 @@ const HeroSection = ({ onStartQuote }) => {
           >
             <button
               onClick={onStartQuote}
-              className="inline-flex items-center gap-2 bg-white text-[#171818] hover:bg-gray-100 font-bold px-8 py-3 rounded-full transition-all duration-300 shadow-xl hover:shadow-2xl"
+              className="inline-flex items-center gap-2 bg-white text-[#171818] hover:bg-gray-100 font-bold px-6 md:px-8 xl:px-10 py-2 md:py-3 xl:py-4 rounded-full transition-all duration-300 shadow-xl hover:shadow-2xl text-sm md:text-base xl:text-lg"
             >
               Start Your Quote
-              <ArrowRight size={18} />
+              <ArrowRight size={16} className="md:w-5 md:h-5 xl:w-6 xl:h-6" />
             </button>
             <button
               onClick={handleCall}
-              className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-white/20 font-bold px-8 py-3 rounded-full transition-all duration-300"
+              className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-white/20 font-bold px-6 md:px-8 xl:px-10 py-2 md:py-3 xl:py-4 rounded-full transition-all duration-300 text-sm md:text-base xl:text-lg"
             >
-              <Phone size={18} />
+              <Phone size={16} className="md:w-5 md:h-5 xl:w-6 xl:h-6" />
               Call Us Now
             </button>
           </motion.div>

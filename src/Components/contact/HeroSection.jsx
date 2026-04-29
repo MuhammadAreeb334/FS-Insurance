@@ -18,8 +18,8 @@ const HeroSection = () => {
         />
       </div>
 
-      {/* Only changed the container width - kept original padding */}
-      <div className="relative z-10 max-w-screen-3xl mx-auto px-6 lg:px-8 text-center">
+      {/* Wider centered content container with max-w-screen-3xl */}
+      <div className="relative z-10 max-w-screen-3xl mx-auto px-6 lg:px-12 xl:px-16 text-center">
         <motion.div
           variants={headerContainerVariants}
           initial="hidden"
@@ -42,7 +42,7 @@ const HeroSection = () => {
 
           <motion.h1
             variants={headerItemVariants}
-            className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight"
+            className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl 3xl:text-8xl font-bold text-white mb-6 leading-tight"
           >
             Get In Touch
             <span className="block text-white/90">
@@ -52,7 +52,7 @@ const HeroSection = () => {
 
           <motion.p
             variants={headerItemVariants}
-            className="text-white/80 text-lg max-w-2xl mx-auto leading-relaxed"
+            className="text-white/80 text-base md:text-lg xl:text-xl max-w-4xl mx-auto leading-relaxed"
           >
             Have questions about our insurance services? Need a quote? Our team
             is here to help. Reach out to us through any of the channels below.
