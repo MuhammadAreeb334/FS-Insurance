@@ -18,8 +18,16 @@ const HeroSection = () => {
   };
 
   return (
-    // Full width background
-    <section className="relative w-full bg-gradient-to-br from-[#171818] to-gray-800 pt-32 pb-12 overflow-hidden">
+    <section className="relative w-full pt-32 pb-12 overflow-hidden">
+      <div
+        className="absolute inset-0 bg-cover bg-center"
+        style={{
+          backgroundImage:
+            "url('https://images.unsplash.com/photo-1475503572774-15a45e5d60b9?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8aW5zdXJhbmNlfGVufDB8fDB8fHww')",
+        }}
+      />
+
+      <div className="absolute inset-0 bg-black/70" />
       <div className="absolute inset-0 opacity-10">
         <div
           className="absolute inset-0"
@@ -29,8 +37,6 @@ const HeroSection = () => {
           }}
         />
       </div>
-
-      {/* Wider centered content container with max-w-screen-3xl */}
       <div className="relative z-10 max-w-screen-3xl mx-auto px-6 lg:px-12 xl:px-16 text-center">
         <motion.div
           ref={heroRef}

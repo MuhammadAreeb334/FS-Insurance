@@ -1,8 +1,8 @@
-import React, { useRef } from 'react';
-import { motion, useInView } from 'framer-motion';
+import React, { useRef } from "react";
+import { motion, useInView } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import { Phone, ArrowRight, Sparkles } from "lucide-react";
-import { headerContainerVariants, headerItemVariants } from './data';
+import { headerContainerVariants, headerItemVariants } from "./data";
 
 const HeroAbout = () => {
   const navigate = useNavigate();
@@ -19,15 +19,28 @@ const HeroAbout = () => {
 
   return (
     // Full width background section
-    <section className="relative w-full bg-gradient-to-br from-[#171818] to-gray-800 pt-32 pb-12 overflow-hidden">
+    <section className="relative w-full pt-32 pb-12 overflow-hidden">
+      {/* Background Image */}
+      <div
+        className="absolute inset-0 bg-cover bg-center"
+        style={{
+          backgroundImage:
+            "url('https://plus.unsplash.com/premium_photo-1661604351507-8ef091e6c93c?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fGluc3VyYW5jZXxlbnwwfHwwfHx8MA%3D%3D')",
+        }}
+      />
+
+      <div className="absolute inset-0 bg-black/70" />
+
       <div className="absolute inset-0 opacity-10">
-        <div className="absolute inset-0" style={{
-          backgroundImage: `radial-gradient(circle at 2px 2px, #fff 1px, transparent 1px)`,
-          backgroundSize: "40px 40px",
-        }} />
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage: `radial-gradient(circle at 2px 2px, #fff 1px, transparent 1px)`,
+            backgroundSize: "40px 40px",
+          }}
+        />
       </div>
-      
-      {/* Wider centered content container with max-w-screen-3xl */}
+
       <div className="relative z-10 max-w-screen-3xl mx-auto px-6 lg:px-12 xl:px-16 text-center">
         <motion.div
           ref={heroRef}
@@ -45,7 +58,9 @@ const HeroAbout = () => {
             >
               <Sparkles size={14} className="text-white" />
             </motion.div>
-            <span className="text-xs font-bold tracking-wider text-white uppercase">About Us</span>
+            <span className="text-xs font-bold tracking-wider text-white uppercase">
+              About Us
+            </span>
           </motion.div>
 
           <motion.h1
@@ -60,8 +75,9 @@ const HeroAbout = () => {
             variants={headerItemVariants}
             className="text-white/80 text-base md:text-lg xl:text-xl max-w-4xl mx-auto leading-relaxed"
           >
-            Global Underwriters provides specialty niche products and service solutions 
-            through industry's leading insurance companies and program administrators.
+            Global Underwriters provides specialty niche products and service
+            solutions through industry's leading insurance companies and program
+            administrators.
           </motion.p>
 
           <motion.div
