@@ -1,4 +1,3 @@
-// components/contact/HeroSection.jsx
 import React from "react";
 import { motion } from "framer-motion";
 import { Sparkles, Mail, Phone, MapPin } from "lucide-react";
@@ -6,8 +5,17 @@ import { headerContainerVariants, headerItemVariants } from "./data";
 
 const HeroSection = () => {
   return (
-    // Full width background
-    <section className="relative w-full bg-gradient-to-br from-[#171818] to-gray-800 pt-32 pb-12 overflow-hidden">
+    <section className="relative w-full pt-32 pb-12 overflow-hidden">
+      <div
+        className="absolute inset-0 bg-cover bg-center"
+        style={{
+          backgroundImage:
+            "url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8aW5zdXJhbmNlfGVufDB8fDB8fHww')",
+        }}
+      />
+
+      <div className="absolute inset-0 bg-black/70" />
+
       <div className="absolute inset-0 opacity-10">
         <div
           className="absolute inset-0"
@@ -18,7 +26,6 @@ const HeroSection = () => {
         />
       </div>
 
-      {/* Wider centered content container with max-w-screen-3xl */}
       <div className="relative z-10 max-w-screen-3xl mx-auto px-6 lg:px-12 xl:px-16 text-center">
         <motion.div
           variants={headerContainerVariants}
